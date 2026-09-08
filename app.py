@@ -105,31 +105,31 @@ with onglet1:
         except Exception as e:
             st.error(f"Erreur lors de la prédiction : {e}")
 
-# ----------------------------- Onglet 2 -------------------------------
-with onglet2:
-    st.subheader("Prédire l'état d'un portable avec plusieurs entrées")
-    st.write(DESCRIPTION)
-    st.caption(
-        "Le fichier CSV doit contenir, dans cet ordre, les colonnes : "
-        "prix, adresse, marque, dimension écran, RAM, stockage."
-    )
+# # ----------------------------- Onglet 2 -------------------------------
+# with onglet2:
+#     st.subheader("Prédire l'état d'un portable avec plusieurs entrées")
+#     st.write(DESCRIPTION)
+#     st.caption(
+#         "Le fichier CSV doit contenir, dans cet ordre, les colonnes : "
+#         "prix, adresse, marque, dimension écran, RAM, stockage."
+#     )
 
-    fichier = st.file_uploader("Importer un fichier CSV", type=["csv"])
+#     fichier = st.file_uploader("Importer un fichier CSV", type=["csv"])
 
-    if fichier is not None:
-        try:
-            with st.spinner("Prédictions en cours…"):
-                df_resultat = Pred_func_csv(fichier)
+#     if fichier is not None:
+#         try:
+#             with st.spinner("Prédictions en cours…"):
+#                 df_resultat = Pred_func_csv(fichier)
 
-            st.success(f"{len(df_resultat)} prédiction(s) effectuée(s).")
-            st.dataframe(df_resultat, use_container_width=True)
+#             st.success(f"{len(df_resultat)} prédiction(s) effectuée(s).")
+#             st.dataframe(df_resultat, use_container_width=True)
 
-            st.download_button(
-                label="⬇️ Télécharger le fichier CSV",
-                data=df_resultat.to_csv(index=False).encode("utf-8"),
-                file_name="predictions.csv",
-                mime="text/csv",
-                type="primary",
-            )
-        except Exception as e:
-            st.error(f"Erreur lors du traitement du fichier : {e}")
+#             st.download_button(
+#                 label="⬇️ Télécharger le fichier CSV",
+#                 data=df_resultat.to_csv(index=False).encode("utf-8"),
+#                 file_name="predictions.csv",
+#                 mime="text/csv",
+#                 type="primary",
+#             )
+#         except Exception as e:
+#             st.error(f"Erreur lors du traitement du fichier : {e}")
